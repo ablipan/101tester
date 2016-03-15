@@ -29,8 +29,8 @@ const OUTPUT_PATH = path.join(__dirname, '../public/')
 // build map file
 const ASSETS_FILENAME = '_assets.json'
 
-const VENDOR_VIEW = 'server/views/layout.hbs'
-const INDEX_VIEW = 'server/views/index.hbs'
+const VENDOR_VIEW = 'server/views/layout.twig'
+const INDEX_VIEW = 'server/views/index.twig'
 
 logger.log('ready')
 
@@ -122,7 +122,7 @@ webpack(myWebpackConfig, (err, stats) => {
         logger.fatal('[%s] 不存在', VENDOR_VIEW)
     }
     // 注入 vendor js/css
-    vendorViewContent = buildUtil.injectAssets(vendorViewContent, vendorJs, vendorCss, 0, 4)
+    vendorViewContent = buildUtil.injectAssets(vendorViewContent, vendorJs, vendorCss, 4, 8)
     jetpack.fileAsync(VENDOR_VIEW, { content: vendorViewContent }).then()
     delete _assets.vendor // 删除 vendor 节点
 
@@ -134,7 +134,9 @@ webpack(myWebpackConfig, (err, stats) => {
         logger.fatal('[%s] 不存在', INDEX_VIEW)
     }
     // 注入 js , css
-    viewContent = buildUtil.injectAssets(viewContent, res.js, res.css, 0, 0)
+    viewContent = buildUtil.injectAssets(viewContent, res.js, res.css, 4, 4)
+    // 取消清空 vendor js /css
+    viewContent = buildUtil.cancelClearVendorAssets(viewContent)
     jetpack.fileAsync(INDEX_VIEW, { content: viewContent }).then()
     // git -add
     logger.success('js /css 注入成功, 正在执行 git add ...')

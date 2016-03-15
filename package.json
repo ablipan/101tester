@@ -4,30 +4,31 @@
   "private": true,
   "scripts": {
     "start": "node --harmony index.js",
-    "client:dev": "babel-node build/dev.js",
-    "client:build": "babel-node build/prod.js"
+    "dev": "babel-node build/dev.js",
+    "build": "babel-node build/prod.js"
   },
   "dependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
+    "babel-plugin-lodash": "^2.2.1",
     "babel-plugin-transform-runtime": "^6.0.0",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-stage-2": "^6.0.0",
     "babel-runtime": "^5.8.0",
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
+    "cors": "^2.7.1",
     "debug": "~2.2.0",
     "express": "~4.13.1",
-    "hbs": "~3.1.0",
+    "leanengine": "^0.4.0",
+    "lodash": "^4.6.1",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "twig": "^0.8.8"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.4.0",
-    "babel-plugin-lodash": "^2.2.1",
     "chalk": "latest",
-    "connect-history-api-fallback": "^1.1.0",
-    "cors": "^2.7.1",
     "eslint": "^2.0.0",
     "eslint-config-standard": "^5.1.0",
     "eslint-friendly-formatter": "^1.2.2",
@@ -35,13 +36,10 @@
     "eslint-plugin-html": "^1.3.0",
     "eslint-plugin-promise": "^1.0.8",
     "eslint-plugin-standard": "^1.3.2",
-    "eventsource-polyfill": "^0.9.6",
     "extract-text-webpack-plugin": "^1.0.1",
     "fs-jetpack": "^0.7.2",
     "git-utils": "^4.1.2",
     "html-webpack-plugin": "^2.10.0",
-    "leanengine": "^0.4.0",
-    "lodash": "^4.6.1",
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.4.2",
     "superagent": "^1.7.0",
@@ -58,5 +56,16 @@
     "webpack-dev-server": "^1.12.0",
     "webpack-hot-middleware": "^2.10.0",
     "webpack-merge": "^0.7.3"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ],
+    "plugins": [
+      "transform-runtime",
+      "lodash"
+    ],
+    "comments": false
   }
 }

@@ -8,10 +8,14 @@ import _ from 'lodash'
 // noinspection JSValidateTypes
 _.templateSettings.interpolate = /{{([\s\S]+?)}}/g
 
-const STYLE_BEGIN = '{{!--%s\style%s--}}'
-const STYLE_END = '{{!--%s\style:end%s--}}'
-const SCRIPT_BEGIN = '{{!--%s\script%s--}}'
-const SCRIPT_END = '{{!--%s\script:end%s--}}'
+const STYLE_BEGIN = '{#%s\style%s#}'
+const STYLE_END = '{#%s\style:end%s#}'
+const SCRIPT_BEGIN = '{#%s\script%s#}'
+const SCRIPT_END = '{#%s\script:end%s#}'
+const DEVELOPMENT_BEGIN = '{#%s\development%s#}'
+const DEVELOPMENT_END = '{#%s\development:end%s#}'
+const DEVELOPMENT_TRUE = '{% set _development = true %}'
+const DEVELOPMENT_FALSE = '{% set _development = false %}'
 const EMPTY_EXP = '\\s*'
 
 /**
@@ -22,7 +26,33 @@ const EMPTY_EXP = '\\s*'
  * @returns {RegExp} 例如  /{# script #}[^#]*{# script:end #}/i
  */
 const _getTagAreaRE = (begin, end) => {
-    return new RegExp(format('%s[^-]*%s', begin, end), 'i')
+    return new RegExp(format('%s[^#]*%s', begin, end), 'i')
+}
+
+/**
+ * 获取 development 块位置
+ * @returns {RegExp}
+ */
+const _getDevelopmentPosition = () => {
+    return _getTagAreaRE(format(DEVELOPMENT_BEGIN, EMPTY_EXP, EMPTY_EXP), format(DEVELOPMENT_END, EMPTY_EXP, EMPTY_EXP))
+}
+
+/**
+ * 生成 development 块
+ * @param content
+ * @returns {string}
+ * @private
+ */
+const _genDevelopBlock = (content) => {
+    const result = []
+    result.push(format(DEVELOPMENT_BEGIN, ' ', ' '))
+    result.push('\n')
+    if (content) {
+        result.push(content)
+        result.push('\n')
+    }
+    result.push(format(DEVELOPMENT_END, ' ', ' '))
+    return result.join('')
 }
 
 /**
@@ -84,7 +114,7 @@ export default{
      * @param cssIndent css 标签缩进
      * @returns {*}
      */
-    injectAssets(fileContent, js, css, jsIndent = 4, cssIndent = 4){
+    injectAssets(fileContent, js, css, jsIndent = 4, cssIndent = 4) {
         if (!js) {
             // 清空 js
             fileContent = fileContent.replace(_getJsTagPosition(), _genEmptyTag(true))
@@ -106,8 +136,15 @@ export default{
      * vendor js /css 的目的
      */
     clearVendorAssets(viewContent) {
-        viewContent = viewContent.replace(_getJsTagPosition(), _genEmptyTag(true))
-          .replace(_getStyleTagPosition(), _genEmptyTag(false))
-        return viewContent
+        return viewContent.replace(_getDevelopmentPosition(), _genDevelopBlock(DEVELOPMENT_TRUE))
+    },
+
+    /**
+     * 取消清空 vendor js /css
+     * 取消插入 vendorScript/ vendorStyle block
+     * vendor js /css 将自动引入
+     */
+    cancelClearVendorAssets(viewContent) {
+        return viewContent.replace(_getDevelopmentPosition(), _genDevelopBlock(DEVELOPMENT_FALSE))
     }
 }

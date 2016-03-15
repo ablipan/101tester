@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    {# vendor css #}
+    {% if _development == false %}
+        {# style #}
+        {# style:end #}
+    {% endif %}
+    {# 业务 css #}
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+{% block body %}{% endblock %}
+{# vendor js #}
+{% if _development == false %}
+    {# script #}
+    <script src="/vendor.c61e12aca4e949e7d88a.js"></script>
+    {# script:end #}
+{% endif %}
+{# 业务 js #}
+{% block script %}
+{% endblock %}
+</body>
+</html>

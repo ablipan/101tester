@@ -12,16 +12,7 @@ import logger from './util/logger'
 import buildUtil from './util/build-util'
 
 const PUBLIC_PATH = 'http://localhost:8080/'
-const VENDOR_VIEW = 'server/views/layout.hbs'
-
-// 替换 view 中的 js
-let vendorViewContent = jetpack.read(VENDOR_VIEW)
-if (!vendorViewContent) {
-    logger.fatal('[%s] 不存在', VENDOR_VIEW)
-}
-// 清空 vendor js/css
-vendorViewContent = buildUtil.clearVendorAssets(vendorViewContent)
-jetpack.fileAsync(VENDOR_VIEW, { content: vendorViewContent }).then()
+const INDEX_VIEW = 'server/views/index.twig'
 
 let myWebpackConfig = _.clone(baseConfig, true)
 // noinspection JSUnresolvedFunction,JSUnresolvedVariable
@@ -74,6 +65,13 @@ new WebpackDevServer(webpack(myWebpackConfig), {
         logger.fatal(err)
     } else {
         logger.success('dev server 启动成功 !')
+        let viewContent = jetpack.read(INDEX_VIEW)
+        const js = PUBLIC_PATH + 'app.js'
+        // 注入 js , 清空 css
+        viewContent = buildUtil.injectAssets(viewContent, js, null)
+        // 清空 vendor js /css
+        viewContent = buildUtil.clearVendorAssets(viewContent)
+        jetpack.fileAsync(INDEX_VIEW, {content: viewContent}).then()
     }
 })
 
