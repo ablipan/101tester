@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node index.js",
+    "start": "node --harmony index.js",
     "client:dev": "babel-node build/dev.js",
     "client:build": "babel-node build/prod.js"
   },
