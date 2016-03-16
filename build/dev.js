@@ -71,7 +71,7 @@ new WebpackDevServer(webpack(myWebpackConfig), {
         viewContent = buildUtil.injectAssets(viewContent, js, null)
         // 清空 vendor js /css
         viewContent = buildUtil.clearVendorAssets(viewContent)
-        jetpack.fileAsync(INDEX_VIEW, {content: viewContent}).then()
+        jetpack.fileAsync(INDEX_VIEW, { content: viewContent }).then()
     }
 })
 

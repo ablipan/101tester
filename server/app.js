@@ -5,12 +5,14 @@ import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import twig from 'twig'
+import AV from 'leanengine'
 import routes from './routes'
-// import favicon from 'serve-favicon'
+import favicon from 'serve-favicon'
+import {isDevelopment} from './utils/env'
 
 const app = express()
 
-if (process.env.DEVELOPMENT === '1') {
+if (isDevelopment) {
     twig.cache(false)
 }
 
@@ -18,8 +20,11 @@ if (process.env.DEVELOPMENT === '1') {
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'twig')
 
+// leancloud
+app.use(AV.Cloud)
+
 // uncomment after placing your favicon in /public
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, '../client/assets', 'favicon.ico')))
 app.use(cors())
 app.use(logger('dev'))
 app.use(bodyParser.json())

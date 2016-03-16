@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>{{ title }}</title>
+    <title>{% block title %} Yo 101test {% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
     {# vendor css #}
     {% if _development == false %}
         {# style #}
-        {# style:end #}
+    {# style:end #}
     {% endif %}
     {# 业务 css #}
     {% block style %}
     {% endblock %}
+
+    {# BugHD : http://bughd.com/project/javascript/56e8b02ea1de522ae100000e #}
+    {% if _development == false %}
+        <script type="text/javascript" src="//dn-bughd-web.qbox.me/bughd.min.js" crossOrigin="anonymous"></script>
+        <script type="text/javascript">
+            window.bughd = window.bughd || function () {};
+            bughd("create", { key: "e7c9aee2c8544469fd57a1c65467b607" });
+        </script>
+    {% endif %}
 </head>
 <body>
 {% block body %}{% endblock %}
 {# vendor js #}
 {% if _development == false %}
     {# script #}
-    <script src="/vendor.c61e12aca4e949e7d88a.js"></script>
+    <script src="/vendor.63f2aaddda9a5a8d0215.js"></script>
     {# script:end #}
 {% endif %}
 {# 业务 js #}

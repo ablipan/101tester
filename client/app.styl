@@ -1,0 +1,118 @@
+$menu-width = 160px
+$main-width = 768px
+
+body
+  min-width: 320px
+  color: #777
+  line-height: 1.6
+  > .layout
+    > .menu-link
+      position: fixed
+      display: block
+      top: 0
+      left: 0
+      background: rgba(0, 0, 0, 0.7)
+      z-index: 10
+      width 3em
+      height 3em
+      text-align: center
+      &:hover
+        background: #000
+      > i
+        margin-top 25%
+        color #fff
+        transition: all 0.4s
+        font-size: 25px
+    > .menu
+      margin-left - $menu-width
+      width: $menu-width
+      position: fixed
+      top: 0
+      left: 0
+      bottom: 0
+      z-index: 1000
+      background: #191818
+      overflow-y: auto
+      .pure-menu-heading
+        font-size: 125%
+        color: #fff
+        padding .5em .8em
+        &:hover
+        &:focus
+          color: #999
+      .pure-menu-list
+      .menu-item-divided
+        border-top: 1px solid #333
+      .pure-menu-item
+        &.v-link-active
+          background: #1f8dd6
+          > a
+            color: #ffffff
+            &:hover
+            &:focus
+              background: none
+        .pure-menu-link
+          color: #999
+          border: none
+          white-space: normal
+          padding: 0.625em 1em
+          &:hover
+          &:focus
+            background: #333
+
+    // layout 展开
+    &.active
+      padding-left: $menu-width
+      > .menu-link
+        left: $menu-width
+
+      > .menu
+        left $menu-width
+
+    > .main
+      > .header
+        font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif
+        max-width: $main-width
+        margin: 0 auto
+        padding: 1em
+        text-align: center
+        border-bottom: 1px solid #eee
+        background: #fff
+        letter-spacing: 0.05em
+        h1
+          font-weight 100
+          font-size: 280%
+          margin: 0
+        h2
+          font-size: 125%
+          font-weight: 100
+          line-height: 1.5
+          margin: 0
+          color: #666
+          letter-spacing: -0.02em
+      > .content
+        margin-left: auto
+        margin-right: auto
+        max-width: $main-width
+        padding-left: 1em
+        padding-right: 1em
+        .content-subhead
+          margin: 2em 0 1em 0
+          font-weight: 300
+          color: #888
+          position: relative
+      @media screen and (min-width: 48em)
+        > .header
+        > .content
+          padding-left: 2em
+          padding-right: 2em
+
+        > .header
+          h1
+            font-size: 300%
+          h2
+            font-size: 128%
+
+        > .content
+          p
+            font-size: 1.125em

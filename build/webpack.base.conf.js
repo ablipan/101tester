@@ -1,5 +1,6 @@
 import path from 'path'
 const clientRoot = path.resolve(__dirname, '../client')
+const projectRoot = path.resolve(__dirname, '../')
 
 export default {
     entry: {
@@ -11,12 +12,13 @@ export default {
         filename: '[name].js'
     },
     resolve: {
+        root: [clientRoot, projectRoot],
         extensions: [ '', '.js', '.vue' ],
         fallback: [ path.join(__dirname, '../node_modules') ],
-        alias: {
-            'client': path.resolve(__dirname, '../client'),
-            'server': path.resolve(__dirname, '../server')
-        }
+        // alias: {
+        //     'client': path.resolve(__dirname, '../client'),
+        //     'server': path.resolve(__dirname, '../server')
+        // }
     },
     resolveLoader: {
         fallback: [ path.join(__dirname, '../node_modules') ]
@@ -26,13 +28,14 @@ export default {
             {
                 test: /\.vue$/,
                 loader: 'eslint',
-                include: clientRoot,
+                include: projectRoot,
                 exclude: /node_modules/
             },
             {
                 test: /\.js$/,
                 loader: 'eslint',
-                include: clientRoot,
+                // 此处不仅限于前端的 js !!
+                include: projectRoot,
                 exclude: /node_modules/
             }
         ],
@@ -44,7 +47,7 @@ export default {
             {
                 test: /\.js$/,
                 loader: 'babel',
-                include: clientRoot,
+                include: projectRoot,
                 exclude: /node_modules/
             },
             {
@@ -54,6 +57,13 @@ export default {
             {
                 test: /\.html$/,
                 loader: 'vue-html'
+            },
+            {
+                test: /\.styl$/,
+                loader: 'style-loader!css-loader!stylus-loader'
+            }, {
+                test: /\.css$/,
+                loader: 'style!css'
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,

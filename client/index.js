@@ -6,13 +6,27 @@
  */
 
 import Vue from 'vue'
-import App from './App'
+import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
+import App from './app'
+import 'purecss'
+import 'font-awesome/css/font-awesome.css'
+import {configRouter} from './router.config'
+import './assets/styl/index.styl'
 
-/* eslint-disable no-new */
-new Vue({
-    el: 'body',
-    components: { App },
-    ready() {
-        console.log('hey')
-    }
+Vue.use(VueRouter)
+Vue.use(VueResource)
+
+// create router
+const router = new VueRouter({
+    history: false,
+    saveScrollPosition: true
 })
+
+// config router
+configRouter(router)
+
+// bootstrap the app
+router.start(App, '#app')
+router.go('/take-picture-on-phone')
+

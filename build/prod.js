@@ -47,7 +47,9 @@ myWebpackConfig = merge(myWebpackConfig, {
         app: './client/index.js',
         vendor: [
             'vue',
-            'vue-resource'
+            'vue-resource',
+            'purecss',
+            'font-awesome/css/font-awesome.css'
         ]
     },
     output: {
@@ -61,7 +63,23 @@ myWebpackConfig = merge(myWebpackConfig, {
         loaders: cssLoaders({
             sourceMap: SOURCE_MAP,
             extract: true
-        })
+        }),
+        // configure autoprefixer https://github.com/postcss/autoprefixer
+        autoprefixer: {
+            browsers: [
+                'last 3 versions',
+                'ie >= 9',
+                'ie_mob >= 10',
+                'ff >= 30',
+                'chrome >= 34',
+                'safari >= 6',
+                'opera >= 12.1',
+                'ios >= 6',
+                'android >= 4.4',
+                'bb >= 10',
+                'and_uc 9.9',
+            ]
+        }
     },
     plugins: [
         // http://vuejs.github.io/vue-loader/workflow/production.html
