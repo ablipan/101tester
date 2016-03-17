@@ -39,6 +39,7 @@
      **/
     import ss from 'simple-ajax-uploader'
     import {isDevelopment} from 'server/utils/env'
+//    import lrz from 'lrz/dist/lrz.all.bundle'
     import lrz from 'lrz/dist/lrz.bundle'
     // TODO 测试用
     import 'client/utils/crypto1/crypto/crypto'
@@ -132,6 +133,9 @@
                         self.afterSize = (rst.fileLen / 1000).toFixed()
                         self.originSize = fileSize
                         this.submit()
+                    }).catch((err) => {
+                        console.log(err)
+                    }).always(() => {
                     })
                 },
                 onExtError(filename, extension) {

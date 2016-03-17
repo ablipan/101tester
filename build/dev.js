@@ -2,6 +2,7 @@
  * 开发模式
  */
 import _ from 'lodash'
+import {format} from 'util'
 import jetpack from 'fs-jetpack'
 import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
@@ -10,8 +11,11 @@ import cssLoaders from './css-loaders'
 import baseConfig from './webpack.base.conf'
 import logger from './util/logger'
 import buildUtil from './util/build-util'
+import {getLocalIp} from '../server/utils/env'
 
-const PUBLIC_PATH = 'http://localhost:8080/'
+const ip = getLocalIp()
+const port = 1339
+const PUBLIC_PATH = format('http://%s:%s/', ip, port)
 const INDEX_VIEW = 'server/views/index.twig'
 
 let myWebpackConfig = _.clone(baseConfig, true)
@@ -19,7 +23,7 @@ let myWebpackConfig = _.clone(baseConfig, true)
 myWebpackConfig = merge(myWebpackConfig, {
     entry: {
         app: [
-            'webpack-dev-server/client?http://localhost:8080',
+            format('webpack-dev-server/client?http://%s:%s', ip, port),
             'webpack/hot/dev-server',
             './client/index.js'
         ]
@@ -60,7 +64,7 @@ new WebpackDevServer(webpack(myWebpackConfig), {
     stats: {
         colors: true
     }
-}).listen(8080, 'localhost', (err) => {
+}).listen(port, ip, (err) => {
     if (err) {
         logger.fatal(err)
     } else {
