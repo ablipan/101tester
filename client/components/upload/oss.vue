@@ -93,7 +93,6 @@
         methods: {},
         ready() {
             self = this
-            console.log('hey')
             /* eslint-disable no-new */
             new ss.SimpleUpload({
                 button: self.$els.uploadBtn,
@@ -142,13 +141,13 @@
                     }).catch((err) => {
                         console.log(err)
                     }).always(() => {
-                        
                     })
                 },
                 onExtError(filename, extension) {
                     console.log('格式错误', filename, extension)
                 },
                 onProgress(pct) {
+                    console.log(pct)
                     self.uploading = true
                     self.percent = pct
                 },
