@@ -11,7 +11,7 @@
         margin-right 10px
         > h3
             margin-top 10px 0
-        th,td
+        th, td
             text-align: center
         tr.active
             background: lightness($active-color, 95%)
@@ -143,16 +143,12 @@
                 return moment().isoWeekday(num).format('dddd')
             },
             /**
-             * 周数 + 余数
+             * 周数
              * @param remainder
              * @returns {number}
              */
             remainder2WeekNum(remainder) {
-                if (this.currentWeekNumRemainder === remainder) {
-                    return this.weekInYear
-                } else {
-                    return this.weekInYear + remainder
-                }
+                return this.weekInYear + (remainder - this.currentWeekNumRemainder)
             }
         },
         computed: {
