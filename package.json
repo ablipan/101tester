@@ -44,6 +44,7 @@
     "git-utils": "^4.1.2",
     "html-webpack-plugin": "^2.10.0",
     "lrz": "github:ablipan/localResizeIMG",
+    "moment": "^2.12.0",
     "purecss": "^0.6.0",
     "simple-ajax-uploader": "github:ablipan/Simple-Ajax-Uploader",
     "stylus-loader": "^1.4.2",

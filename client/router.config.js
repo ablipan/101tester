@@ -1,12 +1,14 @@
 export function configRouter(router) {
     router.map({
-        '/who-is-on-duty': {
-            component: require('./tools/who-is-on-duty.vue'),
+        '/duty': {
+            name: 'duty',
+            component: require('./tools/duty.vue'),
             title: '今天谁值日',
-            desc: 'Yo'
+            desc: 'Yo ! Who is the lucky guy !'
         },
-        '/take-picture-on-phone': {
-            component: require('./code/take-picture-on-phone.vue'),
+        '/oss-upload': {
+            name: 'ossUpload',
+            component: require('./code/oss-upload.vue'),
             title: '手机拍照',
             desc: '在手机上选择图片 / 拍照上传至 oss'
         },

@@ -17,6 +17,8 @@ import './assets/styl/index.styl'
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
+Vue.config.debug = true
+
 // create router
 const router = new VueRouter({
     history: false,
@@ -28,5 +30,5 @@ configRouter(router)
 
 // bootstrap the app
 router.start(App, '#app')
-router.go('/take-picture-on-phone')
+router.go({ name: 'ossUpload' })
 

@@ -17,6 +17,7 @@
 <script>
     import upload from '../components/upload/oss.vue'
     export default{
+        name: 'oss-upload',
         data() {
             return {
                 msg: 'Vue',
