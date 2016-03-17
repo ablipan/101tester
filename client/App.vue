@@ -37,7 +37,7 @@
     export default{
         data() {
             return {
-                menuDisplay: false
+                menuDisplay: !navigator.userAgent.match(/(iPhone|iPad|iPod|Android|ios)/i)
             }
         },
         components: {},
@@ -48,6 +48,8 @@
             toggleMenu() {
                 this.menuDisplay = !this.menuDisplay
             }
+        },
+        ready() {
         }
     }
 </script>

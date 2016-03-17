@@ -11,7 +11,8 @@
         margin-right 10px
         > h3
             margin-top 10px 0
-
+        th,td
+            text-align: center
         tr.active
             background: lightness($active-color, 95%)
 
@@ -19,6 +20,8 @@
             background: $active-color
             color #fff
             border 0
+        td.date
+            width 25%
 </style>
 
 <template>
@@ -42,7 +45,7 @@
 
                 <tbody>
                 <tr v-for="n in 5">
-                    <td style="width: 30%">{{n+1 | num2Weekday}}</td>
+                    <td class="date">{{n+1 | num2Weekday}}</td>
                     <td :class="{'active': todayIsWeekDay && n === todayCoordinate.x && 0 === todayCoordinate.y}">
                         {{dutyOrder[n][0]}}
                     </td>
@@ -55,7 +58,7 @@
         </div>
 
         <div class="weekend">
-            <h3>周末</h3>
+            <h3>双休日</h3>
             <table class="pure-table pure-table-bordered">
                 <thead>
                 <tr>
@@ -67,7 +70,7 @@
 
                 <tbody>
                 <tr v-for="n in 5" :class="{'active': currentWeekNumRemainder === (n+1)}">
-                    <td style="width: 30%">{{n+1 | remainder2WeekNum}}</td>
+                    <td class="date">{{n+1 | remainder2WeekNum}}</td>
                     <td :class="{'active': !todayIsWeekDay && n === todayCoordinate.x && 0 === todayCoordinate.y}">
                         {{dutyOrder[n][0]}}
                     </td>

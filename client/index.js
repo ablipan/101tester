@@ -29,6 +29,8 @@ const router = new VueRouter({
 configRouter(router)
 
 // bootstrap the app
-router.start(App, '#app')
-router.go({ name: 'ossUpload' })
-
+router.start(App, '#app', () => {
+    if (router.app.$route.path === '/') {
+        router.go({ name: 'ossUpload' })
+    }
+})
