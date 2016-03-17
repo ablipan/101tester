@@ -1,16 +1,16 @@
 <!--suppress ALL -->
-<style scoped>
-    .preview {
-        margin-top: 10px;
-    }
+<style lang="stylus" rel="stylesheet/stylus" scoped>
+    .preview
+        margin-top: 10px
 
-    img {
-        max-height: 400px;
-    }
+    img
+        max-height: 400px
 
-    .compress-info {
-        margin-top: 10px;
-    }
+    .compress-info
+        margin-top: 10px
+
+    .upload-info
+        margin-top: 10px
 </style>
 
 <template>
@@ -20,11 +20,14 @@
                 <button class="pure-button button-success">选择文件</button>
             </slot>
         </div>
-        <div class="compress-info" v-if="success">
+        <div class="upload-info" v-if="uploading">
+            正在上传 {{percent}} %
+        </div>
+        <div class="compress-info" v-if="!uploading && success">
             源文件大小：{{originSize}} KB &emsp;
             压缩后大小：{{afterSize}} KB
         </div>
-        <div class="preview" v-if="success">
+        <div class="preview" v-if="!uploading && success">
             <img :src="previewSrc" alt="">
         </div>
     </div>
@@ -39,8 +42,8 @@
      **/
     import ss from 'simple-ajax-uploader'
     import {isDevelopment} from 'server/utils/env'
-//    import lrz from 'lrz/dist/lrz.all.bundle'
-    import lrz from 'lrz/dist/lrz.bundle'
+    //    import lrz from './lrz/lrz'
+    import lrz from 'lrz/dist/lrz.all.bundle'
     // TODO 测试用
     import 'client/utils/crypto1/crypto/crypto'
     import 'client/utils/crypto1/hmac/hmac'
@@ -80,7 +83,9 @@
                 filename: '',
                 previewSrc: null,
                 originSize: 0,
-                afterSize: 0
+                afterSize: 0,
+                uploading: false,
+                percent: 0,
             }
         },
         watch: {},
@@ -88,6 +93,7 @@
         methods: {},
         ready() {
             self = this
+            console.log('hey')
             /* eslint-disable no-new */
             new ss.SimpleUpload({
                 button: self.$els.uploadBtn,
@@ -136,14 +142,19 @@
                     }).catch((err) => {
                         console.log(err)
                     }).always(() => {
+                        
                     })
                 },
                 onExtError(filename, extension) {
                     console.log('格式错误', filename, extension)
                 },
                 onProgress(pct) {
+                    self.uploading = true
+                    self.percent = pct
                 },
                 onComplete() {
+                    self.uploading = false
+                    self.percent = 100
                     self.success = true
                     self.$dispatch('complete', { ok: true })
                 },

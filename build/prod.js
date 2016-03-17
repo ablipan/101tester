@@ -48,6 +48,7 @@ myWebpackConfig = merge(myWebpackConfig, {
         vendor: [
             'vue',
             'vue-resource',
+            'vue-router',
             'purecss',
             'moment',
             'font-awesome/css/font-awesome.css'
