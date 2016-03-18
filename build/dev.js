@@ -62,7 +62,8 @@ new WebpackDevServer(webpack(myWebpackConfig), {
     // 隐藏烦人的日志
     noInfo: true,
     stats: {
-        colors: true
+        colors: true,
+        profile: true
     }
 }).listen(port, ip, (err) => {
     if (err) {

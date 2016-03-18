@@ -12,18 +12,23 @@ export default {
         filename: '[name].js'
     },
     resolve: {
-        root: [clientRoot, projectRoot],
+        root: [ clientRoot, projectRoot ],
         extensions: [ '', '.js', '.vue' ],
         fallback: [ path.join(__dirname, '../node_modules') ],
         // alias: {
         //     'client': path.resolve(__dirname, '../client'),
         //     'server': path.resolve(__dirname, '../server')
         // }
+        alias: {
+            // 加速 webpack 打包 http://code.oneapm.com/javascript/2015/07/07/webpack_performance_1/
+            moment: "moment/min/moment-with-locales.min.js"
+        }
     },
     resolveLoader: {
         fallback: [ path.join(__dirname, '../node_modules') ]
     },
     module: {
+        noParse: [ /moment-with-locales/, /lrz.all.bundle/ ],
         preLoaders: [
             {
                 test: /\.vue$/,
