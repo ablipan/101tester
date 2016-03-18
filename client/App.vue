@@ -7,14 +7,14 @@
             <div class="pure-menu">
                 <a class="pure-menu-heading" @click="refresh()">Yo 101test</a>
                 <ul class="pure-menu-list">
-                    <li class="pure-menu-item" v-link-active>
-                        <a class="pure-menu-link" v-link="{name:'ossUpload'}" @click="toggleMenu()">
-                            手机拍照上传
-                        </a>
-                    </li>
                     <li class="pure-menu-item menu-item-divided" v-link-active>
                         <a class="pure-menu-link" v-link="{name:'duty'}" @click="toggleMenu()">
                             值日
+                        </a>
+                    </li>
+                    <li class="pure-menu-item" v-link-active>
+                        <a class="pure-menu-link" v-link="{name:'ossUpload'}" @click="toggleMenu()">
+                            手机拍照上传
                         </a>
                     </li>
                 </ul>
@@ -27,6 +27,11 @@
             </div>
             <div class="content">
                 <router-view></router-view>
+            </div>
+            <div class="footer">
+                <a href="https://github.com/ablipan/101testool" class="pure-link" target="_blank">
+                    YO！<i class="fa fa-2x fa-github"></i>&nbsp;
+                </a>
             </div>
         </div>
     </div>

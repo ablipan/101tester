@@ -10,6 +10,7 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import App from './app'
 import 'purecss'
+import 'purecss/build/grids-responsive.css'
 import 'font-awesome/css/font-awesome.css'
 import {configRouter} from './router.config'
 import './assets/styl/index.styl'
@@ -29,8 +30,11 @@ const router = new VueRouter({
 configRouter(router)
 
 // bootstrap the app
-router.start(App, '#app', () => {
-    if (router.app.$route.path === '/') {
-        router.go({ name: 'ossUpload' })
-    }
-})
+// router.start(App, '#app', () => {
+//     if (router.app.$route.path === '/') {
+//         router.go({ name: 'duty' })
+//     }
+// })
+
+router.start(App, '#app')
+router.go({ name: 'duty' })

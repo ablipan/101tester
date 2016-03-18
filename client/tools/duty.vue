@@ -6,9 +6,6 @@
         font-weight: 700
 
     .weekday, .weekend
-        display inline-block
-        float left
-        margin-right 10px
         > h3
             margin-top 10px 0
         th, td
@@ -31,55 +28,56 @@
             今日客服：<span class="lucky-guy">{{todayLuckyGuy}}</span><br/>
             明日客服：<span class="next-lucky-guy">{{tomorrowLuckyGuy}}</span><br/>
         </h2>
+        <div class="pure-g">
+            <div class="weekday pure-u-1 pure-u-md-1-2">
+                <h3>工作日</h3>
+                <table class="pure-table pure-table-bordered">
+                    <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>双周</th>
+                        <th>单周</th>
+                    </tr>
+                    </thead>
 
-        <div class="weekday">
-            <h3>工作日</h3>
-            <table class="pure-table pure-table-bordered">
-                <thead>
-                <tr>
-                    <th>日期</th>
-                    <th>双周</th>
-                    <th>单周</th>
-                </tr>
-                </thead>
+                    <tbody>
+                    <tr v-for="n in 5">
+                        <td class="date">{{n+1 | num2Weekday}}</td>
+                        <td :class="{'active': todayIsWeekDay && n === todayCoordinate.x && 0 === todayCoordinate.y}">
+                            {{dutyOrder[n][0]}}
+                        </td>
+                        <td :class="{'active': todayIsWeekDay && n === todayCoordinate.x && 1 === todayCoordinate.y}">
+                            {{dutyOrder[n][1]}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <tbody>
-                <tr v-for="n in 5">
-                    <td class="date">{{n+1 | num2Weekday}}</td>
-                    <td :class="{'active': todayIsWeekDay && n === todayCoordinate.x && 0 === todayCoordinate.y}">
-                        {{dutyOrder[n][0]}}
-                    </td>
-                    <td :class="{'active': todayIsWeekDay && n === todayCoordinate.x && 1 === todayCoordinate.y}">
-                        {{dutyOrder[n][1]}}
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+            <div class="weekend pure-u-1 pure-u-md-1-2">
+                <h3>双休日</h3>
+                <table class="pure-table pure-table-bordered">
+                    <thead>
+                    <tr>
+                        <th>周数</th>
+                        <th>周六</th>
+                        <th>周日</th>
+                    </tr>
+                    </thead>
 
-        <div class="weekend">
-            <h3>双休日</h3>
-            <table class="pure-table pure-table-bordered">
-                <thead>
-                <tr>
-                    <th>周数</th>
-                    <th>周六</th>
-                    <th>周日</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr v-for="n in 5" :class="{'active': currentWeekNumRemainder === (n+1)}">
-                    <td class="date">{{n+1 | remainder2WeekNum}}</td>
-                    <td :class="{'active': !todayIsWeekDay && n === todayCoordinate.x && 0 === todayCoordinate.y}">
-                        {{dutyOrder[n][0]}}
-                    </td>
-                    <td :class="{'active': !todayIsWeekDay && n === todayCoordinate.x && 1 === todayCoordinate.y}">
-                        {{dutyOrder[n][1]}}
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                    <tbody>
+                    <tr v-for="n in 5" :class="{'active': currentWeekNumRemainder === (n+1)}">
+                        <td class="date">{{n+1 | remainder2WeekNum}}</td>
+                        <td :class="{'active': !todayIsWeekDay && n === todayCoordinate.x && 0 === todayCoordinate.y}">
+                            {{dutyOrder[n][0]}}
+                        </td>
+                        <td :class="{'active': !todayIsWeekDay && n === todayCoordinate.x && 1 === todayCoordinate.y}">
+                            {{dutyOrder[n][1]}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </template>
@@ -123,7 +121,7 @@
                 weekInYear: today.isoWeek(),
                 now: today.format('YYYY 年 M 月 D 日 dddd'),
                 dutyOrder: [
-                    [ '陈红梅', '叶金芳' ],
+                    [ '许彤', '叶金芳' ],
                     [ '潘永雷', '张经国' ],
                     [ '陈虎', '冯艺 + 孙悦 + ...' ],
                     [ '谭容', '赵欣 + 徐艮权' ],
