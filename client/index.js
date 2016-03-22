@@ -1,8 +1,8 @@
 /*
  * @Author: Pan
  * @Date:   2016-03-15 13:25:09
- * @Last Modified by:   Pan
- * @Last Modified time: 2016-03-15 13:25:09
+ * @Last Modified by:   lipan
+ * @Last Modified time: 2016-03-22 16:56:15
  */
 
 import Vue from 'vue'
@@ -14,6 +14,9 @@ import 'purecss/build/grids-responsive.css'
 import 'font-awesome/css/font-awesome.css'
 import {configRouter} from './router.config'
 import './assets/styl/index.styl'
+import fastclick from 'fastclick'
+
+fastclick(document.body)
 
 Vue.use(VueRouter)
 Vue.use(VueResource)

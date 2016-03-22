@@ -51,6 +51,7 @@ myWebpackConfig = merge(myWebpackConfig, {
             'vue-router',
             'purecss',
             'moment',
+            'fastclick',
             'font-awesome/css/font-awesome.css'
         ]
     },
