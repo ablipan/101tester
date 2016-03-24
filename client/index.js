@@ -2,7 +2,7 @@
  * @Author: Pan
  * @Date:   2016-03-15 13:25:09
  * @Last Modified by:   lipan
- * @Last Modified time: 2016-03-22 16:56:15
+ * @Last Modified time: 2016-03-24 09:23:05
  */
 
 import Vue from 'vue'
@@ -16,7 +16,7 @@ import {configRouter} from './router.config'
 import './assets/styl/index.styl'
 import fastclick from 'fastclick'
 
-fastclick(document.body)
+fastclick.attach(document.body)
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -33,11 +33,11 @@ const router = new VueRouter({
 configRouter(router)
 
 // bootstrap the app
-// router.start(App, '#app', () => {
-//     if (router.app.$route.path === '/') {
-//         router.go({ name: 'duty' })
-//     }
-// })
+router.start(App, '#app', () => {
+    // if (router.app.$route.path === '/') {
+    //     router.go({ name: 'duty' })
+    // }
+})
 
-router.start(App, '#app')
-router.go({ name: 'duty' })
+// router.start(App, '#app')
+// router.go({ name: 'duty' })
