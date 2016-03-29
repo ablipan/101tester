@@ -1,7 +1,6 @@
 import jetpack from 'fs-jetpack'
 import {execSync} from 'child_process'
 import {format} from 'util'
-import logger from '../util/logger'
 
 /**
  * 执行命令行命令

@@ -42,7 +42,6 @@
     "file-loader": "^0.8.5",
     "font-awesome": "^4.5.0",
     "fs-jetpack": "^0.7.2",
-    "git-utils": "^4.1.2",
     "html-webpack-plugin": "^2.10.0",
     "lrz": "github:ablipan/localResizeIMG",
     "moment": "^2.12.0",
