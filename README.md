@@ -16,7 +16,7 @@ npm run build
 
 # Todo
 * [ ] 插件化 webpack 任务脚本
-* [ ] 手机点击延迟
+* [x] 手机点击延迟
 
 # Issues
 
