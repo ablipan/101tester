@@ -1,3 +1,4 @@
+![](https://travis-ci.org/ablipan/101testool.svg?branch=master)
 # Install
 # dev
 ``` bash
