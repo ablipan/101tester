@@ -1,4 +1,5 @@
 import path from 'path'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 const clientRoot = path.resolve(__dirname, '../client')
 const projectRoot = path.resolve(__dirname, '../')
 
@@ -65,10 +66,10 @@ export default {
             },
             {
                 test: /\.styl$/,
-                loader: 'style-loader!css-loader!stylus-loader'
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
             }, {
                 test: /\.css$/,
-                loader: 'style!css'
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
