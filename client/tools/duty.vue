@@ -19,14 +19,22 @@
             border 0
         td.date
             width 25%
+
+    .speak
+        font-size .7em
+
+    .is-typing:after
+        content '|'
+        -webkit-animation blink 500ms infinite
+        animation blink 500ms infinite
 </style>
 
 <template>
     <div>
         <h2 class="content-subhead">
-            日期：{{now}} &emsp; <br/>
-            今日客服：<span class="lucky-guy">{{todayLuckyGuy}}</span><br/>
-            明日客服：<span class="next-lucky-guy">{{tomorrowLuckyGuy}}</span><br/>
+            {{now}} &emsp; <br/>
+            <span class="lucky-guy">{{todayLuckyGuy}}</span>：<span class="speak" id="today"></span><br/>
+            <span class="next-lucky-guy">{{tomorrowLuckyGuy}}</span>：<span class="speak" id="tomorrow"></span>
         </h2>
         <div class="pure-g">
             <div class="weekday pure-u-1 pure-u-md-1-2">
@@ -86,6 +94,7 @@
 <script type="text/babel">
     import moment from 'moment'
     import {isEven} from 'server/utils/lang'
+    import theaterJS from 'theaterjs'
     moment.locale('zh-cn')
     const today = moment()
     /**
@@ -188,6 +197,30 @@
             this.todayCoordinate = this.getPosByDate(today)
             // 注意: 不要使用 today +1 来当成明天用, 这回导致今天被 +1 ...
             this.tomorrowCoordinate = this.getPosByDate(moment().add(1, 'd'))
+
+            const theater = theaterJS({
+                "minSpeed": 80,
+                "maxSpeed": 450
+            })
+
+            theater.on('type:start, erase:start', () => {
+                const actor = theater.getCurrentActor()
+                actor.$element.classList.add('is-typing')
+            }).on('type:end, erase:end', () => {
+                const actor = theater.getCurrentActor()
+                actor.$element.classList.remove('is-typing')
+            })
+
+            theater.addActor('today')
+                    .addActor('tomorrow')
+
+            theater.addScene('today: 我今天当客服, Fuc')
+                    .addScene(-3)
+                    .addScene('好开心...加油~')
+                    .addScene('tomorrow:原来今天不是我, Shi')
+                    .addScene(-3)
+                    .addScene('明天才是我...唉~')
+                    .addScene(theater.replay)
         }
     }
 </script>

@@ -42,6 +42,17 @@ myWebpackConfig = merge(myWebpackConfig, {
             extract: false
         })
     },
+    module: {
+        loaders: [
+            {
+                test: /\.styl$/,
+                loader: 'style!css!stylus'
+            }, {
+                test: /\.css$/,
+                loader: 'style!css'
+            }
+        ]
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(), // HMR plugin
         new webpack.DefinePlugin({

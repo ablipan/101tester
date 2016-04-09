@@ -65,13 +65,6 @@ export default {
                 loader: 'vue-html'
             },
             {
-                test: /\.styl$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
-            }, {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-            },
-            {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'url',
                 query: {

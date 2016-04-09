@@ -84,6 +84,15 @@ myWebpackConfig = merge(myWebpackConfig, {
             ]
         }
     },
+    module: {
+        loaders: [ {
+            test: /\.styl$/,
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
+        }, {
+            test: /\.css$/,
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        } ]
+    },
     plugins: [
         // http://vuejs.github.io/vue-loader/workflow/production.html
         new webpack.DefinePlugin({

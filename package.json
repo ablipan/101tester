@@ -50,6 +50,7 @@
     "style-loader": "^0.13.1",
     "stylus-loader": "^1.4.2",
     "superagent": "^1.7.0",
+    "theaterjs": "^3.0.0",
     "url-loader": "^0.5.7",
     "vue": "^1.0.17",
     "vue-hot-reload-api": "^1.2.0",
