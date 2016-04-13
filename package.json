@@ -24,7 +24,9 @@
     "lodash": "^4.6.1",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
-    "twig": "^0.8.8"
+    "twig": "^0.8.8",
+    "vue": "^1.0.21",
+    "vue-router": "^0.7.13"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.4.0",
@@ -45,6 +47,7 @@
     "html-webpack-plugin": "^2.10.0",
     "lrz": "github:ablipan/localResizeIMG",
     "moment": "^2.12.0",
+    "plyr": "^1.5.20",
     "purecss": "^0.6.0",
     "simple-ajax-uploader": "github:ablipan/Simple-Ajax-Uploader",
     "style-loader": "^0.13.1",

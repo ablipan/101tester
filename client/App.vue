@@ -17,6 +17,11 @@
                             手机拍照上传
                         </a>
                     </li>
+                    <li class="pure-menu-item" v-link-active>
+                        <a class="pure-menu-link" v-link="{name:'lightweightPlayer'}" @click="toggleMenu()">
+                            手机音视频播放
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

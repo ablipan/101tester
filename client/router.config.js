@@ -12,6 +12,12 @@ export function configRouter(router) {
             title: '手机拍照',
             desc: '在手机上选择图片 / 拍照上传至 oss'
         },
+        '/lightweight-player': {
+            name: 'lightweightPlayer',
+            component: require('./code/player.vue'),
+            title: '手机音视频播放',
+            desc: '在手机上播放音视频'
+        },
         // not found handler
         '*': {
             name: 'missing',
