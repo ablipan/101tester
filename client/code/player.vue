@@ -9,14 +9,14 @@
         </p>
         <p>
             <player type="audio/mp3"
-                    url="http://pan-ghost.oss-cn-beijing.aliyuncs.com/media/%E9%BE%99%E5%8D%B7%E9%A3%8E.mp3"></player>
+                    url="http://7xpcvs.com1.z0.glb.clouddn.com/audio.mp3"></player>
         </p>
         <p>
             视频播放 (不支持 flv)
         </p>
         <p>
             <player type="video/mp4"
-                    url="http://pan-ghost.oss-cn-beijing.aliyuncs.com/media/video.mp4"></player>
+                    url="http://7xpcvs.com1.z0.glb.clouddn.com/video.mp4"></player>
         </p>
     </div>
 </template>
