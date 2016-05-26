@@ -2,19 +2,25 @@ export function configRouter(router) {
     router.map({
         '/duty': {
             name: 'duty',
-            component: require('./tools/duty.vue'),
+            component(resolve) {
+                require(['./tools/duty.vue'], resolve)
+            },
             title: '今天谁值日',
             desc: 'Yo ! Who is the lucky guy !'
         },
         '/oss-upload': {
             name: 'ossUpload',
-            component: require('./code/oss-upload.vue'),
+            component(resolve) {
+                require(['./code/oss-upload.vue'], resolve)
+            },
             title: '手机拍照',
             desc: '在手机上选择图片 / 拍照上传至 oss'
         },
         '/lightweight-player': {
             name: 'lightweightPlayer',
-            component: require('./code/player.vue'),
+            component(resolve) {
+                require(['./code/player.vue'], resolve)
+            },
             title: '手机音视频播放',
             desc: '在手机上播放音视频'
         },

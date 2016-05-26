@@ -2,7 +2,7 @@
  * @Author: Pan
  * @Date:   2016-03-15 13:25:09
  * @Last Modified by:   lipan
- * @Last Modified time: 2016-03-24 09:23:05
+ * @Last Modified time: 2016-05-11 16:43:30
  */
 
 import Vue from 'vue'

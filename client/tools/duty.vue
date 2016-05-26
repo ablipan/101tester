@@ -130,11 +130,11 @@
                 weekInYear: today.isoWeek(),
                 now: today.format('YYYY 年 M 月 D 日 dddd'),
                 dutyOrder: [
-                    [ '许彤', '叶金芳' ],
-                    [ '潘永雷', '张经国' ],
-                    [ '陈虎', '冯艺 + ...' ],
-                    [ '谭容', '赵欣 + 徐艮权' ],
-                    [ '李攀', '李伟' ]
+                    [ '许彤', '叶子' ],
+                    [ '老年潘', '傲娇果儿' ],
+                    [ 'Tiger', '大艺哥 + 美铝' ],
+                    [ '赵少夫人', '欣尼玛' ],
+                    [ '少年攀', '大伟哥' ]
                 ],
                 todayCoordinate: { x: 0, y: 0 },
                 tomorrowCoordinate: { x: 0, y: 0 }
