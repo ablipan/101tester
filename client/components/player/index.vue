@@ -1,4 +1,4 @@
-<style lang="stylus" rel="stylesheet/stylus" scoped>
+<style lang="stylus" scoped>
     video, audio
         width 100%
 </style>
@@ -63,7 +63,7 @@
         </div>
     </div>
 </template>
-<script type="text/babel">
+<script lang="babel">
     import 'plyr/dist/plyr.css'
     import plyr from 'plyr'
     export default{

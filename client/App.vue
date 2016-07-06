@@ -42,7 +42,7 @@
     </div>
 </template>
 
-<script type="text/babel">
+<script lang="babel">
     import './app.styl'
     export default{
         data() {

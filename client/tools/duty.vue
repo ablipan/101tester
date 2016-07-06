@@ -1,4 +1,4 @@
-<style rel="stylesheet/stylus" lang="stylus" scoped>
+<style lang="stylus" scoped>
     $active-color = #5eb95e
 
     .lucky-guy
@@ -91,7 +91,7 @@
 </template>
 
 <!--suppress JSUnresolvedFunction -->
-<script type="text/babel">
+<script lang="babel">
     import moment from 'moment'
     import {isEven} from 'server/utils/lang'
     import theaterJS from 'theaterjs'
@@ -132,7 +132,7 @@
                 dutyOrder: [
                     [ '许彤', '叶子' ],
                     [ '老年潘', '傲娇果儿' ],
-                    [ 'Tiger', '大艺哥 + 美铝' ],
+                    [ 'Tiger', '小安' ],
                     [ '赵少夫人', '欣尼玛' ],
                     [ '少年攀', '大伟哥' ]
                 ],

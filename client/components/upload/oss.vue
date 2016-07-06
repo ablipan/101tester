@@ -1,5 +1,5 @@
 <!--suppress ALL -->
-<style lang="stylus" rel="stylesheet/stylus" scoped>
+<style lang="stylus" scoped>
     .preview
         margin-top: 10px
 
@@ -33,7 +33,7 @@
     </div>
 </template>
 
-<script type="text/babel">
+<script lang="babel">
     /**
      * 上传组件
      *
