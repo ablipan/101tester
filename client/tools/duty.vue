@@ -130,7 +130,7 @@
                 weekInYear: today.isoWeek(),
                 now: today.format('YYYY 年 M 月 D 日 dddd'),
                 dutyOrder: [
-                    [ '许彤', '叶子' ],
+                    [ '红梅', '叶子' ],
                     [ '老年潘', '傲娇果儿' ],
                     [ 'Tiger', '小安' ],
                     [ '赵少夫人', '欣尼玛' ],
